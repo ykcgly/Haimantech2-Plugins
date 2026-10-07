@@ -9448,6 +9448,7 @@ INFINITY_ALL_IN_ONE_MACHINE_1:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -9471,6 +9472,7 @@ INFINITY_ALL_IN_ONE_MACHINE_2:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -9494,6 +9496,7 @@ INFINITY_ALL_IN_ONE_MACHINE_3:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -9517,6 +9520,7 @@ HAIMAN_CLAY_BALL_INGOT_PRODUCER:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -9540,6 +9544,7 @@ HAIMAN_DIRT_PRODUCER:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -9563,6 +9568,7 @@ ELECTRO_MAGNET_INTEGRATED_MACHINE_1:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -9586,6 +9592,7 @@ ELECTRO_MAGNET_INTEGRATED_MACHINE_2:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -9609,6 +9616,7 @@ ELECTRO_MAGNET_INTEGRATED_MACHINE_3:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -9632,6 +9640,7 @@ HAIMAN_BASIC_PRODUCER:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -9655,6 +9664,7 @@ HAIMAN_DEEPSLATE_PRODUCER:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -9678,6 +9688,7 @@ HAIMAN_QUARTZ_PRODUCER_1:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -9701,6 +9712,7 @@ HAIMAN_QUARTZ_PRODUCER_2:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -9724,6 +9736,7 @@ HAIMAN_QUARTZ_PRODUCER_3:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -9747,6 +9760,7 @@ HAIMAN_NETHERITE_INGOT_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -9770,6 +9784,7 @@ HAIMAN_REINFORCED_ALLOY_INGOT_MACHINE_1:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -9793,6 +9808,7 @@ HAIMAN_REINFORCED_ALLOY_INGOT_MACHINE_2:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -9816,6 +9832,7 @@ HAIMAN_REINFORCED_ALLOY_INGOT_MACHINE_3:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -9839,6 +9856,7 @@ HAIMAN_YINSHI_PRODUCER:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -9862,6 +9880,7 @@ HAIMAN_UU_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -9885,6 +9904,7 @@ HAIMAN_TOTEM_EXPLORER:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -9908,6 +9928,7 @@ HAIMAN_SHULKER_BOX_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -9931,6 +9952,7 @@ HAIMAN_SFBOOK_MACHINE_1:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -9954,6 +9976,7 @@ HAIMAN_SFBOOK_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -9977,6 +10000,7 @@ MAN_MADE_MOON:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10000,6 +10024,7 @@ CALCITE_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10023,6 +10048,7 @@ ZISHUJIN_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10046,6 +10072,7 @@ MYZHENZHU_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10069,6 +10096,7 @@ HAIMAN_U_GENERATOR:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10092,6 +10120,7 @@ HAIMAN_ROBOT_GENERATOR:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10115,6 +10144,7 @@ HAIMAN_GAOJI_ROBOT_GENERATOR:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10138,6 +10168,7 @@ MYZHIYAN_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10161,6 +10192,7 @@ STRING_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10184,6 +10216,7 @@ KQHYS_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10207,6 +10240,7 @@ YANGMAO_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10230,6 +10264,7 @@ ZHONG_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10253,6 +10288,7 @@ GLYANJIANGKUAI_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10276,6 +10312,7 @@ KUIJIAJIA_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10299,6 +10336,7 @@ TIZI_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10322,6 +10360,7 @@ ZHIJIANTAI_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10345,6 +10384,7 @@ HUAPEN_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10368,6 +10408,7 @@ YINGWULUO_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10391,6 +10432,7 @@ AIR_HA_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10414,6 +10456,7 @@ MINGMINPAI_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10437,6 +10480,7 @@ MONANG_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10460,6 +10504,7 @@ HEIYAOSHI_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10483,6 +10528,7 @@ KONGBAIFUWEN_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10506,6 +10552,7 @@ SHUCHUXIANG_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10529,6 +10576,7 @@ WATER_BUCKET_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10552,6 +10600,7 @@ LAVA_BUCKET_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10575,6 +10624,7 @@ MILK_BUCKET_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10598,6 +10648,7 @@ POWDER_SNOW_BUCKET_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10621,6 +10672,7 @@ DIAMOND_PICKAXE_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10644,6 +10696,7 @@ IRON_PICKAXE_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10667,6 +10720,7 @@ NETHERITE_PICKAXE_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10690,6 +10744,7 @@ DIAMOND_AXE_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10713,6 +10768,7 @@ DIAMOND_HOE_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10736,6 +10792,7 @@ DIAMOND_SWORD_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10759,6 +10816,7 @@ FLINT_AND_STEEL_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10782,6 +10840,7 @@ FISHING_ROD_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10805,6 +10864,7 @@ SHEARS_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10828,6 +10888,7 @@ SHEARS_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10851,6 +10912,7 @@ EGG_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10874,6 +10936,7 @@ BOAT_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10897,6 +10960,7 @@ MINECART_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10920,6 +10984,7 @@ BOW_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'
@@ -10943,6 +11008,7 @@ CROSSBOW_MACHINE:
     18:
       material: gray_stained_glass_pane
       name: '&a'
+      progressbar: true
     27:
       material: gray_stained_glass_pane
       name: '&a'

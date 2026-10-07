@@ -18,8 +18,12 @@ import org.bukkit.inventory.ItemStack;
  * <p>与 RSC 的 CustomMaterialGenerator + MaterialGeneartorMachineTicker 对齐：
  * 配置里 {@code status} 槽在运行期显示状态板（电力不足/空间不足/生产中），
  * {@code per} 为每刻耗电，{@code tickRate} 为产出一个物品所需的粘液刻数。</p>
+ *
+ * <p>继承 {@link CustomMaterialGenerator}（RSC 兼容垫片）后，逻辑工艺的
+ * 堆叠生成器可按 RSC 兼容分支识别本类配方（MGeneratorRecipe），进入
+ * STACKMGENERATOR_LIST；每台仅单一配方，与垫片的单配方字段模型精确对齐。</p>
  */
-public class HTMaterialGenerator extends HTMachine {
+public class HTMaterialGenerator extends CustomMaterialGenerator {
 
     private static final ItemStack NO_POWER = new CustomItemStack(Material.RED_STAINED_GLASS_PANE, "&4电力不足", "");
     private static final ItemStack NO_SPACE = new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, "&c空间不足", "");
@@ -30,13 +34,12 @@ public class HTMaterialGenerator extends HTMachine {
     public HTMaterialGenerator(ItemGroup group, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe,
                                int[] outputSlots, int energyPerTick, int capacity,
                                List<HTRecipe> recipes, int statusSlot, HTMenu menu) {
-        super(group, item, recipeType, recipe, new int[0], outputSlots, energyPerTick, capacity, 1, recipes, menu);
+        super(group, item, recipeType, recipe, outputSlots, energyPerTick, capacity, recipes, menu);
         this.statusSlot = statusSlot;
     }
 
     @Override
-    protected void constructMenu(BlockMenuPreset preset) {
-        super.constructMenu(preset);
+    protected void decorateExtra(BlockMenuPreset preset) {
         if (statusSlot >= 0) {
             preset.addItem(statusSlot, ChestMenuUtils.getBackground());
             preset.addMenuClickHandler(statusSlot, ChestMenuUtils.getEmptyClickHandler());

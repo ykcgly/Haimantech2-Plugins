@@ -20,6 +20,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.lang.reflect.Constructor;
+import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.abstractItems.MachineRecipe;
 import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.interfaces.InventoryBlock;
 import me.mrCookieSlime.Slimefun.Objects.handlers.BlockTicker;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
@@ -82,6 +84,14 @@ public class HTMachine extends SlimefunItem implements InventoryBlock, EnergyNet
     public HTMachine(ItemGroup group, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe,
                      int[] inputSlots, int[] outputSlots, int energyPerTick, int capacity, int speed,
                      List<HTRecipe> recipes, HTMenu menu) {
+        this(group, item, recipeType, recipe, inputSlots, outputSlots, energyPerTick, capacity, speed,
+                recipes, menu, menu != null && menu.progressSlot() >= 0 ? menu.progressSlot() : DEFAULT_PROGRESS_SLOT);
+    }
+
+    /** 进度槽可显式指定的内部构造（固定布局子类如转化机使用）。 */
+    protected HTMachine(ItemGroup group, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe,
+                        int[] inputSlots, int[] outputSlots, int energyPerTick, int capacity, int speed,
+                        List<HTRecipe> recipes, HTMenu menu, int progressSlot) {
         super(group, item, recipeType, recipe);
         this.inputSlots = inputSlots;
         this.outputSlots = outputSlots;
@@ -90,7 +100,7 @@ public class HTMachine extends SlimefunItem implements InventoryBlock, EnergyNet
         this.speed = Math.max(1, speed);
         this.recipes = List.copyOf(recipes);
         this.menu = menu;
-        this.progressSlot = menu != null && menu.progressSlot() >= 0 ? menu.progressSlot() : DEFAULT_PROGRESS_SLOT;
+        this.progressSlot = progressSlot;
         if (menu != null && menu.progressBar() != null) {
             processor.setProgressBar(menu.progressBar());
         } else {
@@ -102,8 +112,7 @@ public class HTMachine extends SlimefunItem implements InventoryBlock, EnergyNet
             public void onBlockBreak(Block b) {
                 BlockMenu inv = StorageCacheUtils.getMenu(b.getLocation());
                 if (inv != null) {
-                    inv.dropItems(b.getLocation(), getInputSlots());
-                    inv.dropItems(b.getLocation(), getOutputSlots());
+                    dropItemsOnBreak(b, inv);
                 }
                 processor.endOperation(b.getLocation());
                 active.remove(new BlockPosition(b.getLocation()));
@@ -124,13 +133,7 @@ public class HTMachine extends SlimefunItem implements InventoryBlock, EnergyNet
         });
         // 标题与布局由菜单决定；无菜单时回退机器名 + 默认布局（对应 RSC MachineTicker.createPreset）
         String title = menu != null && menu.title() != null ? menu.title() : getItemName();
-        createPreset(this, title, preset -> {
-            if (menu != null) {
-                menu.apply(preset);
-            } else {
-                constructMenu(preset);
-            }
-        });
+        createPreset(this, title, preset -> constructMenu(preset));
     }
 
     /** 供子类（状态槽恢复等）访问同名菜单。 */
@@ -161,9 +164,24 @@ public class HTMachine extends SlimefunItem implements InventoryBlock, EnergyNet
         preset.addMenuClickHandler(DEFAULT_PROGRESS_SLOT, ChestMenuUtils.getEmptyClickHandler());
     }
 
-    /** 构建默认界面（与 RSC 无自定义菜单时的布局一致）。 */
+    /**
+     * 构建机器界面：有同名菜单优先应用菜单装饰，否则回退默认布局；
+     * 之后统一调用 {@link #decorateExtra} 让子类追加专属槽（如材料生成器的状态槽）。
+     * 关键点：无论是否有自定义菜单，子类专属处理器都会被 {@code decorateExtra} 注册——
+     * 这正是此前状态槽(9)能被玩家取下的根因修复点（旧逻辑在"有菜单"分支直接走
+     * {@code menu.apply} 而跳过了状态槽处理器）。
+     */
     protected void constructMenu(BlockMenuPreset preset) {
-        buildDefaultMenu(preset, progressBar);
+        if (menu != null) {
+            menu.apply(preset);
+        } else {
+            buildDefaultMenu(preset, progressBar);
+        }
+        decorateExtra(preset);
+    }
+
+    /** 子类追加专属槽处理器（默认无操作）。例如 HTMaterialGenerator 用来注册状态槽的不可点击处理器。 */
+    protected void decorateExtra(BlockMenuPreset preset) {
     }
 
     // ------------------------------------------------------------------ tick
@@ -221,7 +239,7 @@ public class HTMachine extends SlimefunItem implements InventoryBlock, EnergyNet
         if (!op.isFinished()) {
             onStatus(l, inv, Status.PROCESSING);
             if (inv.hasViewer()) {
-                processor.updateProgressBar(inv, progressSlot, op);
+                updateProgressDisplay(inv, op);
             }
             op.addProgress(1);
             return;
@@ -233,11 +251,33 @@ public class HTMachine extends SlimefunItem implements InventoryBlock, EnergyNet
         if (!pushed) {
             onStatus(l, inv, Status.NO_SPACE);
         } else if (inv.hasViewer()) {
-            // 闲置恢复：有菜单时优先菜单装饰物品，否则默认进度条（与 RSC 恢复语义一致）
+            // 闲置恢复：有菜单时优先菜单装饰物品，否则闲置面板（与 RSC 恢复语义一致）
             inv.replaceExistingItem(progressSlot,
-                    menu != null ? menu.progressItemAt(progressSlot, progressBar) : progressBar.clone());
+                    menu != null ? menu.progressItemAt(progressSlot, progressBar) : idleProgressItem());
         }
         processor.endOperation(l);
+    }
+
+    /**
+     * 破坏机器时掉落内容物；默认掉输入+输出槽。
+     * 子类可覆写（转化机覆写为全槽位掉落，便于旧布局机器里滞留物品的迁移回收）。
+     */
+    protected void dropItemsOnBreak(Block b, BlockMenu inv) {
+        inv.dropItems(b.getLocation(), getInputSlots());
+        inv.dropItems(b.getLocation(), getOutputSlots());
+    }
+
+    /**
+     * 进度显示（仅在有旁观者时每刻调用）。
+     * 默认写入黑色进度条；子类可覆写（转化机显示绿色"工作中 X tick 后产出"面板）。
+     */
+    protected void updateProgressDisplay(BlockMenu inv, CraftingOperation op) {
+        processor.updateProgressBar(inv, progressSlot, op);
+    }
+
+    /** 闲置/完成时进度槽恢复显示的物品；默认黑色进度条，子类可覆写（转化机为橙色"空闲中"面板）。 */
+    protected ItemStack idleProgressItem() {
+        return progressBar.clone();
     }
 
     @Override
@@ -406,6 +446,117 @@ public class HTMachine extends SlimefunItem implements InventoryBlock, EnergyNet
 
     public int getEnergyPerTick() {
         return energyPerTick;
+    }
+
+    /**
+     * 逻辑工艺（LogiTech）堆叠机读取的每刻耗电：tryGetMachineEnergy 优先反射
+     * {@code getEnergyConsumption()} 方法分支（其次才是 energyPerTick 字段兜底）。
+     */
+    public int getEnergyConsumption() {
+        return energyPerTick;
+    }
+
+    /** LogiTech {@code MGeneratorRecipe(int, ItemStack[], ItemStack[])} 构造器；未安装逻辑工艺时为 null。 */
+    private static volatile Constructor<?> logiTechGeneratorCtor;
+    private static volatile boolean logiTechCtorResolved;
+
+    private static Constructor<?> logiTechGeneratorCtor() {
+        if (!logiTechCtorResolved) {
+            synchronized (HTMachine.class) {
+                if (!logiTechCtorResolved) {
+                    try {
+                        Class<?> cls = Class.forName(
+                                "me.matl114.logitech.utils.UtilClass.RecipeClass.MGeneratorRecipe");
+                        logiTechGeneratorCtor =
+                                cls.getConstructor(int.class, ItemStack[].class, ItemStack[].class);
+                    } catch (Throwable t) {
+                        logiTechGeneratorCtor = null;
+                    }
+                    logiTechCtorResolved = true;
+                }
+            }
+        }
+        return logiTechGeneratorCtor;
+    }
+
+    /**
+     * 是否满足"材料生成器"配方语义（可进逻辑工艺<b>堆叠生成器</b>）：
+     * 全部工作配方的输入<b>全部不消耗</b>（催化剂）、产出全部 100% 概率且非 chooseOne。
+     * MGeneratorRecipe 不携带概率/chooseOne 元数据，StackMGenerator 的检测槽也不消耗输入，
+     * 因此概率非 100% 或 chooseOne 或有真实消耗输入的机器必须留在堆叠配方机器（概率语义才能保留）。
+     */
+    private boolean isMaterialGeneratorRecipes() {
+        boolean any = false;
+        for (HTRecipe recipe : recipes) {
+            if (recipe.isForDisplay()) continue;
+            any = true;
+            for (HTRecipe.Input input : recipe.getInputs()) {
+                if (!input.noConsume()) return false;
+            }
+            if (recipe.isChooseOne()) return false;
+            for (HTRecipe.Output output : recipe.getOutputs()) {
+                if (output.chance() != 100) return false;
+            }
+        }
+        return any;
+    }
+
+    /**
+     * 逻辑工艺（LogiTech）堆叠机的配方识别入口：其 RecipeSupporter 对未知机器
+     * 优先反射调用 {@code getMachineRecipes()} 方法收集 MachineRecipe 列表。
+     *
+     * <p>按配方语义自动分流（实测定案：输入不消耗的机器属于材料生成器，须进堆叠生成器）：</p>
+     * <ul>
+     *   <li><b>材料生成器语义</b>（全部工作配方输入不消耗、产出全 100%、非 chooseOne）：
+     *       构造 LogiTech 的 {@code MGeneratorRecipe}（运行时反射，无编译依赖）——其
+     *       {@code RecipeSupporter} 按类型直通（transferRSCRecipes 仅拦截
+     *       CustomMachineRecipe 后缀），机器进入<b>堆叠生成器</b>（STACKMGENERATOR_LIST）；
+     *       StackMGenerator 把机器物品放入机器槽、催化剂放入检测槽（不消耗），产出数=机器数×效率。
+     *       逻辑工艺未安装或反射失败时降级为下述堆叠配方机器通道。</li>
+     *   <li><b>常规配方</b>：转为 {@link HTCustomMachineRecipe}——类名以
+     *       {@code CustomMachineRecipe} 结尾，命中 RSC 兼容通道，
+     *       noConsume（催化剂）/ 产出概率 / chooseOne 语义完整保留，
+     *       机器进入堆叠配方机器（STACKMACHINE_LIST）。</li>
+     * </ul>
+     * 时间单位一致（本类 ticks 即 Slimefun 刻），速度与耗电不变。
+     */
+    public List<MachineRecipe> getMachineRecipes() {
+        List<MachineRecipe> list = new ArrayList<>(recipes.size());
+        Constructor<?> mgCtor = isMaterialGeneratorRecipes() ? logiTechGeneratorCtor() : null;
+        for (HTRecipe recipe : recipes) {
+            if (recipe.isForDisplay()) continue;
+
+            List<HTRecipe.Input> inputs = recipe.getInputs();
+            ItemStack[] in = new ItemStack[inputs.size()];
+            List<Integer> noConsume = new ArrayList<>();
+            for (int i = 0; i < inputs.size(); i++) {
+                HTRecipe.Input input = inputs.get(i);
+                ItemStack template = input.template().clone();
+                template.setAmount(Math.max(1, input.amount()));
+                in[i] = template;
+                if (input.noConsume()) noConsume.add(i);
+            }
+
+            List<HTRecipe.Output> outputs = recipe.getOutputs();
+            ItemStack[] out = new ItemStack[outputs.size()];
+            List<Integer> chances = new ArrayList<>(outputs.size());
+            for (int i = 0; i < outputs.size(); i++) {
+                HTRecipe.Output output = outputs.get(i);
+                out[i] = output.item().clone();
+                chances.add(output.chance());
+            }
+
+            if (mgCtor != null) {
+                try {
+                    list.add((MachineRecipe) mgCtor.newInstance(recipe.getTicks(), in, out));
+                    continue;
+                } catch (Throwable t) {
+                    mgCtor = null; // 反射失败：本机降级为堆叠配方机器通道
+                }
+            }
+            list.add(new HTCustomMachineRecipe(recipe.getTicks(), in, out, chances, noConsume, recipe.isChooseOne()));
+        }
+        return list;
     }
 
     @Override

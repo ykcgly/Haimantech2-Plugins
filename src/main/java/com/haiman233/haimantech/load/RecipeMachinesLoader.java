@@ -3,6 +3,7 @@ package com.haiman233.haimantech.load;
 import com.haiman233.haimantech.HT;
 import com.haiman233.haimantech.customs.HTMachine;
 import com.haiman233.haimantech.customs.HTRecipe;
+import com.haiman233.haimantech.customs.HTTransformMachine;
 import java.util.ArrayList;
 import java.util.List;
 import org.bukkit.configuration.ConfigurationSection;
@@ -50,10 +51,35 @@ public final class RecipeMachinesLoader {
             if (p == null) return false;
 
             List<HTRecipe> recipes = readRecipes(file, id, s.getConfigurationSection("recipes"));
-            new HTMachine(p.group(), p.item(), p.recipeType(), p.recipe(),
-                    input, output, energy, capacity, speed, recipes, MenusLoader.get(effId)).register(HT.plugin);
+            if (isTransform(recipes)) {
+                // 转化机（输入催化剂不消耗，仿逻辑工艺虚拟种植机）：
+                // 界面与槽位固化（4 输入 / 13 状态 / 18-53 输出），yml 的 input/output 槽位表
+                // 与同名菜单不生效——布局由 HTTransformMachine 固定提供。
+                new HTTransformMachine(p.group(), p.item(), p.recipeType(), p.recipe(),
+                        energy, capacity, speed, recipes).register(HT.plugin);
+            } else {
+                new HTMachine(p.group(), p.item(), p.recipeType(), p.recipe(),
+                        input, output, energy, capacity, speed, recipes, MenusLoader.get(effId)).register(HT.plugin);
+            }
             return true;
         });
+    }
+
+    /**
+     * 是否为"转化机"：全部工作配方均为单一输入条目且 noConsume（输入催化剂不消耗、周期产出）。
+     * 多输入条目（如钓鱼机的鱼竿+饵料）无法收敛到单输入槽布局，保持原机制与界面。
+     * forDisplay 配方仅用于指南展示，不参与判定。
+     */
+    private static boolean isTransform(List<HTRecipe> recipes) {
+        boolean hasWorking = false;
+        for (HTRecipe r : recipes) {
+            if (r.isForDisplay()) continue;
+            hasWorking = true;
+            if (r.getInputs().size() != 1 || !r.getInputs().get(0).noConsume()) {
+                return false;
+            }
+        }
+        return hasWorking;
     }
 
     /** 读取配方集合；坏配方逐条告警跳过。 */

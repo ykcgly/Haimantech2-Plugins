@@ -48,6 +48,9 @@ public final class Setup {
         MaterialGeneratorsLoader.load();
         RecipeMachinesLoader.load();
 
+        // 代码定义的特殊机器：粘液书皮压缩机（粘液书兜底合成，不耗电）
+        com.haiman233.haimantech.customs.HTSlimeBookCompressor.registerMachine();
+
         // 研究必须最后注册（依赖全部物品已就位）
         ResearchesLoader.load();
 
