@@ -40,7 +40,7 @@ public final class HaimanTechPlugin extends JavaPlugin implements SlimefunAddon 
         getLogger().info("=========================================================");
         getLogger().info("                 海曼科技院 开始加载（独立版）");
         getLogger().info("                   作者： haiman");
-        getLogger().info("                  当前版本：1.9.11");
+        getLogger().info("                  当前版本：1.9.2");
         getLogger().info("=========================================================");
 
         if (!checkDependencies()) return;
