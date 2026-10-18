@@ -1,5 +1,7 @@
 # HaimanTech2-Plugin
 
+<img width="350" height="350" alt="haiman" src="https://github.com/user-attachments/assets/f8fdc668-63f5-42dd-b760-61c688a10e74" />
+
 海曼科技院最开始是通过SlimeCustomizer/RykenSlimefunCustomizer插件写成的一份配置文件，旨在完善粘液科技线，拓展新的原版玩法  
 现在被养坤场管理员转为了jar版本
 
