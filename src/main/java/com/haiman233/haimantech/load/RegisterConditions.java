@@ -2,6 +2,7 @@ package com.haiman233.haimantech.load;
 
 import com.haiman233.haimantech.HT;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.regex.Matcher;
@@ -35,6 +36,11 @@ import org.bukkit.configuration.ConfigurationSection;
  * {@code 26.3.build.249-stable}。本类统一读取 {@code Bukkit.getMinecraftVersion()} 并只截取开头的
  * 连续数字段：既让既有的 {@code version >= 1.21} 条件在 26.3 下仍正确选中高版本分支，
  * 也保证将来书写 {@code version >= 26.3} 时不会被 build 号干扰。</p>
+ *
+ * <p><b>配方级版本</b>：{@code recipes.<n>.version} 由 {@link #passRecipeVersion} 判定，
+ * 与整条目条件共用同一套版本解析和 {@code version-filter} 开关。这样一台机器可以只写一次，
+ * 把跨 MC 版本的配方并列放在同一 {@code recipes} 段里（高版本配方标最低版本，
+ * 旧配方标 {@code < X}），无需再为版本拆成多台 {@code id_alias} 机器。</p>
  */
 public final class RegisterConditions {
 
@@ -49,6 +55,18 @@ public final class RegisterConditions {
      * {@code 1.21.11-R0.1-SNAPSHOT} -> {@code 1.21.11}；{@code 26.3.build.249-stable} -> {@code 26.3}。
      */
     private static final Pattern VERSION_PREFIX = Pattern.compile("^(\\d+(?:\\.\\d+)*)");
+
+    /**
+     * 单条配方版本表达式。省略操作符时按 {@code >=} 处理（{@code version: 1.21.2} 等价于
+     * {@code version: '>= 1.21.2'}）；也允许带 {@code version} 前缀，与整条目条件写法一致。
+     */
+    private static final Pattern RECIPE_VERSION_EXPR = Pattern.compile(
+            "^(?:version\\s+)?(<=|>=|==|!=|=|<|>)?\\s*([0-9]+(?:\\.[0-9]+)*)\\s*$",
+            Pattern.CASE_INSENSITIVE);
+
+    /** 同一条 version 内的多条件分隔符：{@code >= 1.20.5, < 1.21} / 列表 / {@code and}。 */
+    private static final Pattern CONDITION_SEPARATOR =
+            Pattern.compile("[,;]|&&|\\s+and\\s+", Pattern.CASE_INSENSITIVE);
 
     /** 服务端 MC 版本段（1.21.11 -> [1,21,11]；26.3 -> [26,3,0]），首次使用时解析并缓存。 */
     private static int[] serverVersion;
@@ -134,6 +152,52 @@ public final class RegisterConditions {
         return true;
     }
 
+    /**
+     * 配方级版本条件（{@code recipes.<n>.version}）判定；返回 true 表示该配方在当前服务端启用。
+     *
+     * <p>支持的写法（可混用，多个条件取「与」，全部满足才启用）：</p>
+     * <ul>
+     *   <li>{@code version: '>= 1.21.2'} —— 最低版本；省略操作符的 {@code version: 1.21.2} 等价</li>
+     *   <li>{@code version: '< 1.21'} —— 仅旧版本启用（用于与高版本配方互斥）</li>
+     *   <li>{@code version: '>= 1.20.5, < 1.21'} —— 版本区间</li>
+     *   <li>{@code version: ['>= 1.20.5', '< 1.21']} —— YAML 列表</li>
+     * </ul>
+     *
+     * <p>无 version 字段 = 全版本启用。{@code version-filter: false} 时全部启用。
+     * 无法识别的表达式只告警并忽略该子条件（fail-open），避免手误导致整条配方静默消失。</p>
+     */
+    public static boolean passRecipeVersion(ConfigurationSection r) {
+        if (r == null || !versionFilterEnabled()) return true;
+
+        List<String> expressions = new ArrayList<>();
+        if (r.isList("version")) {
+            for (Object o : r.getList("version")) {
+                if (o != null) expressions.add(String.valueOf(o));
+            }
+        } else {
+            String single = r.getString("version");
+            if (single != null && !single.isBlank()) expressions.add(single);
+        }
+        if (expressions.isEmpty()) return true;
+
+        for (String expression : expressions) {
+            for (String part : CONDITION_SEPARATOR.split(expression)) {
+                String text = part.trim();
+                if (text.isEmpty()) continue;
+                Matcher m = RECIPE_VERSION_EXPR.matcher(text);
+                if (!m.matches()) {
+                    HT.warn("配方版本条件格式错误 [" + text + "]（" + r.getCurrentPath()
+                            + "），已忽略该子条件");
+                    continue;
+                }
+                // 裸版本号 = 最低版本，与「检测到 MC 版本高于或等于再启用」语义一致
+                String op = m.group(1) == null ? ">=" : m.group(1);
+                if (!matches(op, m.group(2))) return false;
+            }
+        }
+        return true;
+    }
+
     /** 版本条件过滤开关（config.yml 的 version-filter，默认 true = 严格按版本选择条目）。 */
     private static boolean versionFilterEnabled() {
         try {
@@ -190,7 +254,8 @@ public final class RegisterConditions {
         return serverVersion;
     }
 
-    private static String serverVersionText() {
+    /** 服务端版本原文，供日志展示（26.3 而非补零后的 26.3.0）。 */
+    public static String serverVersionText() {
         serverVersion();
         return serverVersionRaw;
     }

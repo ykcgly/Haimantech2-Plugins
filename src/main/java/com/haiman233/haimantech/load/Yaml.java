@@ -4,9 +4,12 @@ import com.haiman233.haimantech.HT;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.StringReader;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 /**
@@ -97,17 +100,50 @@ public final class Yaml {
         return cfg;
     }
 
+    /**
+     * 未加引号的 {@code version: >= 1.21.2}：SnakeYAML 会把行首 {@code >} 当作折叠块标量
+     * 指示符并抛 ScannerException，导致整份大配置加载失败。这里在解析前把这类标量补上单引号，
+     * 让配方版本条件既能按示例直写，也可自行加引号（已是字符串/带引号的行不受影响）。
+     */
+    private static final Pattern UNQUOTED_VERSION = Pattern.compile(
+            "^(\\s*version:[ ]*)(>=|<=|==|!=|>|<|=)([^'\"\\r\\n]*)([ \\t]*\\r?)$");
+
+    private static String quoteVersionScalars(String raw) {
+        String[] lines = raw.split("\n", -1);
+        StringBuilder sb = new StringBuilder(raw.length() + 64);
+        for (int i = 0; i < lines.length; i++) {
+            if (i > 0) sb.append('\n');
+            String line = lines[i];
+            Matcher m = UNQUOTED_VERSION.matcher(line);
+            if (m.matches() && !m.group(3).isBlank()) {
+                // 行尾注释留在引号外，避免被当成版本表达式的一部分
+                String value = m.group(3);
+                String comment = "";
+                int hash = value.indexOf('#');
+                if (hash >= 0) {
+                    comment = " " + value.substring(hash);
+                    value = value.substring(0, hash);
+                }
+                sb.append(m.group(1)).append('\'')
+                        .append(m.group(2)).append(value.stripTrailing())
+                        .append('\'').append(comment).append(m.group(4));
+            } else {
+                sb.append(line);
+            }
+        }
+        return sb.toString();
+    }
+
     private static YamlConfiguration doLoad(String path, String cacheKey) {
-        try (InputStream in = HT.plugin.getResource(path)) {
-            if (in == null) {
-                HT.missing("资源缺失:" + path);
-                return new YamlConfiguration();
-            }
-            try (InputStreamReader reader = new InputStreamReader(in, StandardCharsets.UTF_8)) {
-                return YamlConfiguration.loadConfiguration(reader);
-            }
-        } catch (IOException e) {
-            HT.warn("读取 " + path + " 失败: " + e);
+        String raw = readResourceText(path);
+        if (raw == null) {
+            HT.missing("资源缺失:" + path);
+            return new YamlConfiguration();
+        }
+        try (StringReader reader = new StringReader(quoteVersionScalars(raw))) {
+            return YamlConfiguration.loadConfiguration(reader);
+        } catch (RuntimeException e) {
+            HT.warn("解析 " + path + " 失败: " + e);
             return new YamlConfiguration();
         }
     }

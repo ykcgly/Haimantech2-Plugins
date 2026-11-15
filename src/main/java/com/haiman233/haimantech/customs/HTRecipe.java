@@ -17,6 +17,7 @@ import org.bukkit.inventory.ItemStack;
  *   <li>{@code chooseOne: true} 时在命中的输出中随机取一个</li>
  *   <li>{@code forDisplay: true} 的配方仅用于指南展示，不参与实际匹配</li>
  *   <li>{@code hide: true} 的配方不在指南展示</li>
+ *   <li>{@code version} 由加载期判定，不满足的配方根本不会构造成 HTRecipe</li>
  * </ul>
  */
 public final class HTRecipe {

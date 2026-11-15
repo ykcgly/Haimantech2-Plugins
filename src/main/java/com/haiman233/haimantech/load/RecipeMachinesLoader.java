@@ -14,12 +14,21 @@ import org.bukkit.configuration.ConfigurationSection;
  * <p>条目字段：speed / capacity / energyPerCraft / input[] / output[] / recipes{}。
  * 每条配方：seconds + input{}（amount、noConsume）+ output{}（chance），
  * 以及 chooseOne / forDisplay / hide 开关。</p>
+ *
+ * <p><b>配方级版本</b>：每条配方可带 {@code version}（{@code '>= 1.21.2'}、{@code '< 1.21'}、
+ * 区间或裸版本号）。不满足的配方在加载期直接剔除，不解析其材料、不进指南、不参与匹配与
+ * {@link #isTransform} 判定，因此一台机器可以并列携带多个 MC 版本的配方而无需拆成
+ * 多个 {@code id_alias} 条目。开关与整条目版本条件共用 config.yml 的 {@code version-filter}。</p>
  */
 public final class RecipeMachinesLoader {
 
     private RecipeMachinesLoader() {}
 
+    /** 本次加载因版本条件跳过的配方总数，加载结束汇总一行日志。 */
+    private static int skippedByVersion;
+
     public static void load() {
+        skippedByVersion = 0;
         LoaderSupport.loadFile("recipe_machines.yml", (file, id, s) -> {
             if (!RegisterConditions.pass(s)) return false;
 
@@ -63,6 +72,10 @@ public final class RecipeMachinesLoader {
             }
             return true;
         });
+        if (skippedByVersion > 0) {
+            HT.log("配方版本过滤: 服务端 " + RegisterConditions.serverVersionText()
+                    + "，共跳过 " + skippedByVersion + " 条不适用配方");
+        }
     }
 
     /**
@@ -92,6 +105,11 @@ public final class RecipeMachinesLoader {
         for (String key : recipes.getKeys(false)) {
             ConfigurationSection r = recipes.getConfigurationSection(key);
             if (r == null) continue;
+            // 版本条件先判：不满足时连材料都不解析，避免新材质在旧服务端刷出缺失告警
+            if (!RegisterConditions.passRecipeVersion(r)) {
+                skippedByVersion++;
+                continue;
+            }
             int seconds = r.getInt("seconds", -1);
             if (seconds < 0) {
                 HT.warn(file + " " + machineId + " 配方 " + key + " 缺少或配置错误 '配方耗时' (seconds)，已跳过");
