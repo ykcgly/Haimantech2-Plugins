@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "com.haiman233"
-version = "1.10.1-standalone"
+version = "1.10.2-standalone"
 
 java {
     // 编译期必须用 JDK 25：paper-api 26.3 的 class 是 major 69，JDK 21 的 javac 无法读取。
