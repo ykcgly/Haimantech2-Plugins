@@ -661,13 +661,6 @@ shuji:
   - BOOK_2
   - BOOK_3
   - BOOK_4
-yinxingji:
-  lateInit: false
-  id: 110000067
-  name: 物品隐形
-  levelCost: 42
-  items:
-  - HAIMAN_YINGXING_MACHINE
 xszpzp:
   lateInit: false
   id: 110000967
