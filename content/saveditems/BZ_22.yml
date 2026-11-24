@@ -6,5 +6,5 @@ item:
     ==: ItemMeta
     meta-type: TILE_ENTITY
     display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"blue","text":"埋藏的宝箱"}],"text":""}'
-    internal: H4sIAAAAAAAA/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZRBLzkgtLinWTyotykxNiS8pSk0sLi1KZWAAAFDCr0I6AAAA
+    internal: H4sIAAAAAAAC/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZRBLzkgtLinWTyotykxNiS8pSk0sLi1K5WBgykxh4M/NzEtNLkpMK7ECK2NgAAAGRUDnUAAAAA==
     blockMaterial: CHEST

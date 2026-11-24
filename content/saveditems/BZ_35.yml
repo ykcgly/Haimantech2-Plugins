@@ -6,5 +6,5 @@ item:
     ==: ItemMeta
     meta-type: TILE_ENTITY
     display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"gold","text":"奖励箱"}],"text":""}'
-    internal: H4sIAAAAAAAA/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZZBIzkgtLinWLy5ILM+LT8rPKy2OBwsxMAAAVWW+djwAAAA=
+    internal: H4sIAAAAAAAC/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZZBIzkgtLinWLy5ILM+LT8rPKy2OBwtxMDBlpjDw52bmpSYXJaaVWIFFGRgAelxaOVIAAAA=
     blockMaterial: CHEST

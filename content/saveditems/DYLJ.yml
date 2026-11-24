@@ -6,5 +6,5 @@ item:
     ==: ItemMeta
     meta-type: TILE_ENTITY
     display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"dark_green","text":"钓鱼垃圾"}],"text":""}'
-    internal: H4sIAAAAAAAA/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZRBNT8xNLchJrNRPyyzOyMxL188qzctmYAAAoUlSqjkAAAA=
+    internal: H4sIAAAAAAAC/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZRBNT8xNLchJrNRPyyzOyMxL188qzcvmYGDKTGHgz83MS00uSkwrsUrOSC0uYWAAACrPotJPAAAA
     blockMaterial: CHEST

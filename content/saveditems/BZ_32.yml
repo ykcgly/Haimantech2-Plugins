@@ -6,5 +6,5 @@ item:
     ==: ItemMeta
     meta-type: TILE_ENTITY
     display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"aqua","text":"沉船补给箱"}],"text":""}'
-    internal: H4sIAAAAAAAA/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZRBPzkgtLinWL87ILCgvSk3Oji8uLSjIqWRgAADWSebPOwAAAA==
+    internal: H4sIAAAAAAAC/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZRBPzkgtLinWL87ILCgvSk3Oji8uLSjIqeRgYMpMYeDPzcxLTS5KTCuxAqtjYAAA8k191lEAAAA=
     blockMaterial: CHEST

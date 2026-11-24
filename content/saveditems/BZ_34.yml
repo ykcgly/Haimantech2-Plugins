@@ -6,5 +6,5 @@ item:
     ==: ItemMeta
     meta-type: TILE_ENTITY
     display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"green","text":"地牢宝箱"}],"text":""}'
-    internal: H4sIAAAAAAAA/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZRBNzkgtLinWL87MLchJjU8pzUtPzc9jYAAA2lGM8zkAAAA=
+    internal: H4sIAAAAAAAC/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZRBNzkgtLinWL87MLchJjU8pzUtPzc/jYGDKTGHgz83MS00uSkwrsQKrYmAAADLul/BPAAAA
     blockMaterial: CHEST

@@ -6,5 +6,5 @@ item:
     ==: ItemMeta
     meta-type: TILE_ENTITY
     display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"dark_red","text":"猪灵堡垒宝箱"}],"text":""}'
-    internal: H4sIAAAAAAAA/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZRBJzkgtLinWT0osLsnMz4vPL8lILWJgAADzZ7WpOAAAAA==
+    internal: H4sIAAAAAAAC/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZRBJzkgtLinWT0osLsnMz4vPL8lILeJgYMpMYeDPzcxLTS5KTCuxAitiYAAAT9ar3U4AAAA=
     blockMaterial: CHEST

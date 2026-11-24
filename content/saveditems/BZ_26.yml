@@ -6,5 +6,5 @@ item:
     ==: ItemMeta
     meta-type: TILE_ENTITY
     display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"green","text":"丛林神庙宝箱"}],"text":""}'
-    internal: H4sIAAAAAAAA/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZRBJzkgtLinWzyrNS89JjS9JzS0AijIAAJBd9N44AAAA
+    internal: H4sIAAAAAAAC/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZRBJzkgtLinWzyrNS89JjS9JzS3ISeVgYMpMYeDPzcxLTS5KTCuxAitiYAAAGUR32U4AAAA=
     blockMaterial: CHEST

@@ -6,5 +6,5 @@ item:
     ==: ItemMeta
     meta-type: TILE_ENTITY
     display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"light_purple","text":"村庄牧师宝箱"}],"text":""}'
-    internal: H4sIAAAAAAAA/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZZBNzkgtLinWL8vMyUlMT4XR8SWpuQVAaQYAvir/y0EAAAA=
+    internal: H4sIAAAAAAAC/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZZBNzkgtLinWL8vMyUlMT4XR8SWpuQU5qRwMTJkpDPy5mXmpyUWJaSVWYNUMDAAPe8rEVwAAAA==
     blockMaterial: CHEST

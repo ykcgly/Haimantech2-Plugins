@@ -6,5 +6,5 @@ item:
     ==: ItemMeta
     meta-type: TILE_ENTITY
     display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"yellow","text":"沙漠村庄宝箱"}],"text":""}'
-    internal: H4sIAAAAAAAA/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZVBOzkgtLinWL8vMyUlMT4XR8SmpxalFJfEZ+aXFqQwMAPLIJGVHAAAA
+    internal: H4sIAAAAAAAC/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZVBOzkgtLinWL8vMyUlMT4XR8SmpxalFJfEZ+aXFqRwMTJkpDPy5mXmpyUWJaSVWYD0MDACKcW36XQAAAA==
     blockMaterial: CHEST

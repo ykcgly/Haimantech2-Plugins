@@ -6,5 +6,5 @@ item:
     ==: ItemMeta
     meta-type: TILE_ENTITY
     display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"gold","text":"钓鱼宝藏"}],"text":""}'
-    internal: H4sIAAAAAAAA/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZZBMT8xNLchJrNRPyyzOyMxL1y8pSk0sLi1KZWAAAAmQnIk9AAAA
+    internal: H4sIAAAAAAAC/wXBMRJAMBAF0D8qUlA7RXqlGZ3SBVas2BGJSVaR23vPAAb9HJK7l6iidSPfoltT0o32wBg9PfwGqvaUckn0VjNT+TK3aOTA8Ehkl+nUyV1cFPgBkCkuWVMAAAA=
     blockMaterial: CHEST

@@ -6,5 +6,5 @@ item:
     ==: ItemMeta
     meta-type: TILE_ENTITY
     display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"aqua","text":"沉船宝箱"}],"text":""}'
-    internal: H4sIAAAAAAAA/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZZBMzkgtLinWL87ILCgvSk3Oji8pSk0sLi1KZWAAAARCvVo9AAAA
+    internal: H4sIAAAAAAAC/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZZBMzkgtLinWL87ILCgvSk3Oji8pSk0sLi1K5WBgykxh4M/NzEtNLkpMK7ECq2RgAAAF2QDaUwAAAA==
     blockMaterial: CHEST

@@ -6,5 +6,5 @@ item:
     ==: ItemMeta
     meta-type: TILE_ENTITY
     display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"aqua","text":"村庄渔夫宝箱"}],"text":""}'
-    internal: H4sIAAAAAAAA/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZZBNzkgtLinWL8vMyUlMT4XR8WmZxRmpRQwMAEsz7D9BAAAA
+    internal: H4sIAAAAAAAC/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZZBNzkgtLinWL8vMyUlMT4XR8WmZxRmpRRwMTJkpDPy5mXmpyUWJaSVWYNUMDAAqPJyeVwAAAA==
     blockMaterial: CHEST

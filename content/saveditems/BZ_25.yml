@@ -6,5 +6,5 @@ item:
     ==: ItemMeta
     meta-type: TILE_ENTITY
     display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"雪屋宝箱"}],"text":""}'
-    internal: H4sIAAAAAAAA/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZRBKzkgtLinWz0zPyc+PB3MYGAAoeSPsNgAAAA==
+    internal: H4sIAAAAAAAC/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZRBKzkgtLinWz0zPyc+PB3M4GJgyUxj4czPzUpOLEtNKrMCiDAwAVHx5lUwAAAA=
     blockMaterial: CHEST

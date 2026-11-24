@@ -6,5 +6,5 @@ item:
     ==: ItemMeta
     meta-type: TILE_ENTITY
     display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"dark_red","text":"猪灵堡垒桥梁宝箱"}],"text":""}'
-    internal: H4sIAAAAAAAA/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZRBNzkgtLinWT0osLsnMz4tPKspMSU9lYAAA8+gIUDkAAAA=
+    internal: H4sIAAAAAAAC/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZRBNzkgtLinWT0osLsnMz4tPKspMSU/lYGDKTGHgz83MS00uSkwrsQKrYmAAANadC7hPAAAA
     blockMaterial: CHEST

@@ -1,15 +1,19 @@
 package com.haiman233.haimantech.load;
 
 import com.haiman233.haimantech.HT;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.zip.GZIPInputStream;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 /**
@@ -47,16 +51,56 @@ public final class Yaml {
         return cfg;
     }
 
+    /** TILE_ENTITY 旧格式的 {@code internal} 值：base64(gzip(NBT))。 */
+    private static final Pattern INTERNAL_BLOB = Pattern.compile("internal:\\s*([A-Za-z0-9+/=]+)");
+    /** NBT 中名为 "id" 的 TAG_String 字段头：type=8, nameLen=2, "id"。 */
+    private static final byte[] ID_TAG = {8, 0, 2, 105, 100};
+
     private static YamlConfiguration loadSavedItem0(String name) {
         String path = "saveditems/" + name + ".yml";
         String raw = readResourceText(path);
-        if (raw != null && raw.contains("meta-type: ENTITY_TAG")) {
-            return sanitizeLegacyEntitySavedItem(name, raw);
+        if (raw != null) {
+            if (raw.contains("meta-type: ENTITY_TAG")) {
+                return sanitizeLegacyEntitySavedItem(name, raw);
+            }
+            // 1.20.x 的 TILE_ENTITY 旧格式：internal NBT 的 BlockEntityTag 缺 "id" 时，
+            // 1.21+ 反序列化会走 BlockEntity.loadStatic()，读不到 id 就打印
+            // "Skipping block entity with invalid type: null" 并丢弃整个方块实体（含 LootTable）。
+            // Paper 的补 id 兜底只在写回物品时生效，管不到反序列化阶段，因此这里绕开 Bukkit。
+            if (raw.contains("meta-type: TILE_ENTITY") && !blockEntityIdPresent(raw)) {
+                return sanitizeLegacyEntitySavedItem(name, raw);
+            }
         }
         return doLoad(path, name);
     }
 
-    /** 旧实体标签 saveditem 净化：仅提取 item.type 与 item.meta.display-name，供 Read 程序化重建。 */
+    /** internal NBT 是否自带 id；无 internal 或无法解码时分别按「无需检查」「按缺失」处理。 */
+    private static boolean blockEntityIdPresent(String raw) {
+        Matcher m = INTERNAL_BLOB.matcher(raw);
+        if (!m.find()) return true;
+        try {
+            byte[] gz = Base64.getDecoder().decode(m.group(1));
+            byte[] nbt;
+            try (GZIPInputStream in = new GZIPInputStream(new ByteArrayInputStream(gz));
+                 ByteArrayOutputStream out = new ByteArrayOutputStream()) {
+                in.transferTo(out);
+                nbt = out.toByteArray();
+            }
+            outer:
+            for (int i = 0; i <= nbt.length - ID_TAG.length; i++) {
+                for (int j = 0; j < ID_TAG.length; j++) {
+                    if (nbt[i + j] != ID_TAG[j]) continue outer;
+                }
+                return true;
+            }
+            return false;
+        } catch (Exception e) {
+            // 解码失败说明数据本身已损坏，保守走重建，避免服务端 NMS 刷错误
+            return false;
+        }
+    }
+
+    /** 旧格式 saveditem 净化：仅提取 item.type / display-name / lore，供 Read 程序化重建。 */
     private static YamlConfiguration sanitizeLegacyEntitySavedItem(String name, String raw) {
         YamlConfiguration cfg = new YamlConfiguration();
         try {
@@ -64,9 +108,13 @@ public final class Yaml {
             Object root = new org.yaml.snakeyaml.Yaml().load(raw);
             if (root instanceof Map<?, ?> map && map.get("item") instanceof Map<?, ?> item) {
                 if (item.get("type") != null) cfg.set("item.type", String.valueOf(item.get("type")));
-                if (item.get("meta") instanceof Map<?, ?> meta
-                        && meta.get("display-name") instanceof String dn) {
-                    cfg.set("item.meta.display-name", dn);
+                if (item.get("meta") instanceof Map<?, ?> meta) {
+                    if (meta.get("display-name") instanceof String dn) {
+                        cfg.set("item.meta.display-name", dn);
+                    }
+                    if (meta.get("lore") instanceof java.util.List<?> lore && !lore.isEmpty()) {
+                        cfg.set("item.meta.lore", lore);
+                    }
                 }
             }
             cfg.set(LEGACY_MARK, true);

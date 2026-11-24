@@ -6,5 +6,5 @@ item:
     ==: ItemMeta
     meta-type: TILE_ENTITY
     display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"light_purple","text":"末地城宝箱"}],"text":""}'
-    internal: H4sIAAAAAAAA/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZZBIzkgtLinWT81LiU8GyseXFKUmFpcWpTIwAACzIZc5PAAAAA==
+    internal: H4sIAAAAAAAC/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZZBIzkgtLinWT81LiU8GyseXFKUmFpcWpXIwMGWmMPDnZualJhclppVYgRUyMAAAYnhYTFIAAAA=
     blockMaterial: CHEST

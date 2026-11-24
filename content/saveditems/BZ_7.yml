@@ -6,5 +6,5 @@ item:
     ==: ItemMeta
     meta-type: TILE_ENTITY
     display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"white","text":"村庄石匠宝箱"}],"text":""}'
-    internal: H4sIAAAAAAAA/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZZBJzkgtLinWL8vMyUlMT4XR8bmJxfl5DAwA6hRnOkAAAAA=
+    internal: H4sIAAAAAAAC/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZZBJzkgtLinWL8vMyUlMT4XR8bmJxfl5HAxMmSkM/LmZeanJRYlpJVZgxQwMAIh+4NdWAAAA
     blockMaterial: CHEST

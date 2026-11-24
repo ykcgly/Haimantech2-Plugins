@@ -6,5 +6,5 @@ item:
     ==: ItemMeta
     meta-type: TILE_ENTITY
     display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"aqua","text":"沉船地图箱"}],"text":""}'
-    internal: H4sIAAAAAAAA/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZRBJzkgtLinWL87ILCgvSk3Ojs9NLGBgAABCB+HUOAAAAA==
+    internal: H4sIAAAAAAAC/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZRBJzkgtLinWL87ILCgvSk3Ojs9NLOBgYMpMYeDPzcxLTS5KTCuxAitiYAAAiJIZE04AAAA=
     blockMaterial: CHEST

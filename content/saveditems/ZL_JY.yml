@@ -6,5 +6,5 @@ item:
     ==: ItemMeta
     meta-type: TILE_ENTITY
     display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"light_purple","text":"猪灵交易物"}],"text":""}'
-    internal: H4sIAAAAAAAA/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZZBMT8xNLchJrNQvyEzPycyLT0osKkktysxLZ2AAAJm5Duw9AAAA
+    internal: H4sIAAAAAAAC/w3KMQ6AIAwAwMZJGXT2Fe6OJm6O7KZgxUYoBrvwe735DICBfonZ36soa7UYWui2nNWiiwRjwERPxDo9HCLL7rAoFZa/NXzAkFjIFzx19he9CvABLQcrhlMAAAA=
     blockMaterial: CHEST

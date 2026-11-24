@@ -6,5 +6,5 @@ item:
     ==: ItemMeta
     meta-type: TILE_ENTITY
     display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"gold","text":"下界要塞宝箱"}],"text":""}'
-    internal: H4sIAAAAAAAA/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZRBJzkgtLinWz0styUgtik8qykxJT2VgAAC/kZSxOAAAAA==
+    internal: H4sIAAAAAAAC/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZRBJzkgtLinWz0styUgtik8qykxJT+VgYMpMYeDPzcxLTS5KTCuxAitiYAAA6u88e04AAAA=
     blockMaterial: CHEST

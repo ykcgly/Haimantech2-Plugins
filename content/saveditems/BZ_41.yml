@@ -6,5 +6,5 @@ item:
     ==: ItemMeta
     meta-type: TILE_ENTITY
     display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"dark_green","text":"林地府邸宝箱"}],"text":""}'
-    internal: H4sIAAAAAAAA/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZRBPzkgtLinWL8/PT8lJzEuJz03MK87Mz2NgAAB5pJ3bOwAAAA==
+    internal: H4sIAAAAAAAC/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZRBPzkgtLinWL8/PT8lJzEuJz03MK87Mz+NgYMpMYeDPzcxLTS5KTCuxAqtjYAAAzwtEM1EAAAA=
     blockMaterial: CHEST

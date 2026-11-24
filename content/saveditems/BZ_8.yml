@@ -6,5 +6,5 @@ item:
     ==: ItemMeta
     meta-type: TILE_ENTITY
     display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"green","text":"平原村庄宝箱"}],"text":""}'
-    internal: H4sIAAAAAAAA/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZVBOzkgtLinWL8vMyUlMT4XR8QU5iZl5xfEZ+aXFqQwMAGacZS5HAAAA
+    internal: H4sIAAAAAAAC/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZVBOzkgtLinWL8vMyUlMT4XR8QU5iZl5xfEZ+aXFqRwMTJkpDPy5mXmpyUWJaSVWYD0MDAD2XkpaXQAAAA==
     blockMaterial: CHEST

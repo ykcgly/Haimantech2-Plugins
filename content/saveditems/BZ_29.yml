@@ -6,5 +6,5 @@ item:
     ==: ItemMeta
     meta-type: TILE_ENTITY
     display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"gray","text":"掠夺者前哨站宝箱"}],"text":""}'
-    internal: H4sIAAAAAAAA/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZRBPzkgtLinWL8jMyUlMTy2Kzy8tKcgvLmFgAAA4+QtMOwAAAA==
+    internal: H4sIAAAAAAAC/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZRBPzkgtLinWL8jMyUlMTy2Kzy8tKcgvLuFgYMpMYeDPzcxLTS5KTCuxAqtjYAAAS4OPNVEAAAA=
     blockMaterial: CHEST

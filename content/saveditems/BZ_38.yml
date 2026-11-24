@@ -6,5 +6,5 @@ item:
     ==: ItemMeta
     meta-type: TILE_ENTITY
     display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"green","text":"要塞图书馆宝箱"}],"text":""}'
-    internal: H4sIAAAAAAAA/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZZBMzkgtLinWLy4pys9Lz8jPSYnPyUwqSiyqZGAAAKHHQ0s9AAAA
+    internal: H4sIAAAAAAAC/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZZBMzkgtLinWLy4pys9Lz8jPSYnPyUwqSiyq5GBgykxh4M/NzEtNLkpMK7ECq2RgAABuDACQUwAAAA==
     blockMaterial: CHEST

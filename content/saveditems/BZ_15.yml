@@ -6,5 +6,5 @@ item:
     ==: ItemMeta
     meta-type: TILE_ENTITY
     display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"aqua","text":"村庄工具匠宝箱"}],"text":""}'
-    internal: H4sIAAAAAAAA/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZVBIzkgtLinWL8vMyUlMT4XR8SX5+TnFuZklGQwMANpKGXZEAAAA
+    internal: H4sIAAAAAAAC/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZVBIzkgtLinWL8vMyUlMT4XR8SX5+TnFuZklGRwMTJkpDPy5mXmpyUWJaSVWYA0MDAC3GbnhWgAAAA==
     blockMaterial: CHEST

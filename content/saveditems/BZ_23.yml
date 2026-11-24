@@ -6,5 +6,5 @@ item:
     ==: ItemMeta
     meta-type: TILE_ENTITY
     display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"yellow","text":"沙漠神殿宝箱"}],"text":""}'
-    internal: H4sIAAAAAAAA/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZRBNzkgtLinWT0ktTi0qiS+oLErMzUxhYAAAR+Xf6zkAAAA=
+    internal: H4sIAAAAAAAC/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZRBNzkgtLinWT0ktTi0qiS+oLErMzUzhYGDKTGHgz83MS00uSkwrsQKrYmAAACb6VXhPAAAA
     blockMaterial: CHEST

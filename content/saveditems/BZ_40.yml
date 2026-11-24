@@ -6,5 +6,5 @@ item:
     ==: ItemMeta
     meta-type: TILE_ENTITY
     display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"blue","text":"小型海底废墟宝箱"}],"text":""}'
-    internal: H4sIAAAAAAAA/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZZBJzkgtLinWL81LSS0qTyxJLYovKs3Miy/OTczJYWAAAKEepmFAAAAA
+    internal: H4sIAAAAAAAC/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZZBJzkgtLinWL81LSS0qTyxJLYovKs3Miy/OTczJ4WBgykxh4M/NzEtNLkpMK7ECK2ZgAAB2SXCTVgAAAA==
     blockMaterial: CHEST

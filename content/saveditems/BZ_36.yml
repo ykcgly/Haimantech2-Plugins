@@ -6,5 +6,5 @@ item:
     ==: ItemMeta
     meta-type: TILE_ENTITY
     display-name: '{"extra":[{"bold":true,"italic":false,"underlined":false,"strikethrough":false,"obfuscated":false,"color":"green","text":"要塞台阶祭坛宝箱"}],"text":""}'
-    internal: H4sIAAAAAAAA/+NiYOBi4HPKyU/Ods0rySypDElM52Dg9MnPLwlJTMpJZZBKzkgtLinWLy4pys9Lz8jPSYlPzi8qykzJL2JgAABGE84JPgAAAA==
+    internal: H4sIAAAAAAAC/x3KoQ6AIBQF0DsTErT7E3ajm81IdwgITORtj1f8ezdPPhrQGNZC7t6qZHmNjQr9TiTGniVgcik0aXMTphoTFX84Ys6eWKHLHuOTa3BsL1n+Cny4qLaDVAAAAA==
     blockMaterial: CHEST
