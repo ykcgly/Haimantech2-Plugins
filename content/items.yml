@@ -21,7 +21,7 @@ VERSION_INFO:
     name: '&c&l版本号&仓库地址'
     lore:
       - '&f当前海曼科技院版本：'
-      - '&bRelease-1.10.2'
+      - '&bRelease-1.10.3'
       - '&7您在提issues的时候需要展示这个'
       - "&f仓库地址："
       - '&bhttps://github.com/ykcgly/Haimantech2-Plugins'

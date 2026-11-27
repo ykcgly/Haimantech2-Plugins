@@ -36,6 +36,11 @@ public class HTMaterialGenerator extends CustomMaterialGenerator {
                                List<HTRecipe> recipes, int statusSlot, HTMenu menu) {
         super(group, item, recipeType, recipe, outputSlots, energyPerTick, capacity, recipes, menu);
         this.statusSlot = statusSlot;
+        // 状态槽除了常规的槽位点击处理器外，还登记到交互防护注册表：
+        // 拦截双击收集 / 创造模式 CREATIVE 点击 / 拖拽合并等绕过槽位处理器的取放路径
+        if (statusSlot >= 0) {
+            HTSlotGuard.protect(item.getItemId(), statusSlot);
+        }
     }
 
     @Override

@@ -44,10 +44,12 @@ public final class HaimanTechPlugin extends JavaPlugin implements SlimefunAddon 
         getLogger().info("=========================================================");
         getLogger().info("                 海曼科技院 开始加载（独立版）");
         getLogger().info("                   作者： haiman");
-        getLogger().info("                  当前版本：1.10.2");
+        getLogger().info("                  当前版本：1.10.3");
         getLogger().info("=========================================================");
 
         if (!checkDependencies()) return;
+        // 锁定槽位交互防护（状态槽等）：先注册监听器再加载内容，保证机器登记前防护就绪
+        com.haiman233.haimantech.customs.HTSlotGuard.register(this);
         try {
             Setup.loadAll();
             getLogger().info("海曼科技院 加载成功");
