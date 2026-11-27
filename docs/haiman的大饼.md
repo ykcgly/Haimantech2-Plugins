@@ -1,0 +1,90 @@
+> 不一定全部实现
+> 部分东西可能太过于繁杂而且没用的可能不做
+
+命名牌爆发仪、xinzi脑壳爆发仪
+sc的材料发生器可以堆叠不可堆叠物品
+货运马达、马达一体
+1.RV版本提示病句
+主世界生产粒子 末地粒子生产机/过载机 电动纳米机器人（多方块）
+绘画机 生物蛋  挪用天璇的石头工厂 紫水晶一体
+恼鬼宝石一体 1.20原版陶瓷片一体 唱片机新唱片
+无尽储存一体机 唱片发电机
+药品生产机  农作物玩法
+前期食品 食材加工机 快餐加工机 罐头
+“茶百道” 马凯附魔机 马凯附魔书
+复合板一体机 塑料纸一体机
+星际附属的机器（单独提出来成一个拓展包）
+上锁机（包括信标）
+高级粒子过载机
+压缩粘液书
+粘液书转换机
+补充遗迹搜寻机的战利品箱
+监守者掉落物
+无法破坏刷子
+告示牌改造机
+电动织布机（灾厄旗帜）
+0级附魔书
+粘液书里的图标制作机
+无标签山羊角
+水桶岩浆桶奶桶爆发仪
+
+用材料发生器堆叠不可堆叠物品
+
+各种药剂和药水箭（制箭台）五级灾厄
+
+立式音响头颅
+/give haiman minecraft:player_head{BlockEntityTag:{note_block_sound:"minecraft:music.game"}}
+环境音响
+未使用音效
+/playsound minecraft:entity.ghast.scream master @a播放“Ghast affectionate scream”声音。
+/playsound minecraft:entity.player.breath master @a播放“Breath”声音。
+/playsound minecraft:entity.wolf.howl master @a播放“Howl”声音。
+/playsound minecraft:entity.silverfish.step master @a播放“Silverfish walking”声音。
+
+更多矿车
+/give @p minecraft:cow_spawn_egg{EntityTag:{CustomDisplayTile:1b,DisplayState:{Name:"minecraft:structure_block"},id:"minecraft:minecart",DisplayOffset:6}} 1
+
+凝冰机
+冰——冰块
+2冰块——浮冰
+浮冰——2冰
+2冰——蓝冰
+附魔书——冰霜行者1
+
+生物科技+自定义进度（GEO挖蛋）
+
+唤魔机 
+红蓝羊毛转换
+恼鬼细胞和地刺结构
+
+细胞改良机
+转换马
+兔——杀手兔
+哞菇——棕色哞菇
+蓝色美xy
+卫道士——Johnny卫道士
+转换美西螈种类
+（羊驼的强度）
+地毯强化机（强化装备在羊驼身上的地毯）
+僵尸马——驯服的僵尸马
+骷髅马——驯服的骷髅马
+狐狸——雪狐
+末影水晶——有底座的末影水晶
+修改村民种类
+
+运输工具悬浮机（浮空船，矿车）
+
+泰坦机（改变生物大小）
+
+捕蜂机（增加蜂巢和蜂箱内蜜蜂的个数）
+
+盔甲架搭卸机
+大/小 有/无手 无底座
+小 有/无手 有底座
+大 有手 有底座
+光 大/小 有底座 有手
+光 大/小 无座 隐形 有手
+光 大/小 无座 隐形 有手 锁 （灵体）
+大/小 有/无手 无座 锁 （木架）
+
+地图染色机（闲着没事搞）
